@@ -28,25 +28,21 @@ public class EndpointsController {
     @GetMapping("/redact")
     public String redact(@RequestParam MultiValueMap<String, String> querystring) {
         String result="";
-        try {
-            Redact redact = new Redact();
-            for (String key : querystring.keySet()) {
-                switch (key.toUpperCase()) {
-                    case "ORIGINAL":
-                        for (String value : querystring.get(key)){
-                            redact.setOriginal(value);
-                            break;
-                        }
+        Redact redact = new Redact();
+        for (String key : querystring.keySet()) {
+            switch (key.toUpperCase()) {
+                case "ORIGINAL":
+                    for (String value : querystring.get(key)){
+                        redact.setOriginal(value);
                         break;
-                    case "BADWORD":
-                        redact.setBadWords(querystring.get(key));
-                        break;
-                }
+                    }
+                    break;
+                case "BADWORD":
+                    redact.setBadWords(querystring.get(key));
+                    break;
             }
-            result=redact.getRedact();
-        } catch (Exception e) {
-            result="Redact Error: " + e.getMessage();
         }
+        result=redact.getRedact();
         return result;
     }
 

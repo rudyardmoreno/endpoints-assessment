@@ -35,25 +35,21 @@ public class Encode {
 <span class="fc" id="L35">        String result=&quot;&quot;;</span>
 <span class="fc" id="L36">        int count=0;</span>
 <span class="fc" id="L37">        int index=0;</span>
-        try {
-<span class="pc bpc" id="L39" title="1 of 2 branches missed.">            if ( ALPHABET.length() != key.length() ) {</span>
-<span class="nc" id="L40">                result = String.format(&quot;Invalid key (%s). It does not have same length than English alphabet (%s)&quot;, key.toString(), ALPHABET.toString());</span>
-            } else {
-<span class="fc bfc" id="L42" title="All 2 branches covered.">                for (int i=0 ; i&lt;message.length() ; i++) {</span>
-<span class="fc" id="L43">                    index=ALPHABET.indexOf(message.charAt(i));</span>
-<span class="fc bfc" id="L44" title="All 2 branches covered.">                    result+= (index&gt;=0) ? key.charAt(index) : message.charAt(i);</span>
-                }
+<span class="fc bfc" id="L38" title="All 2 branches covered.">        if ( ALPHABET.length() != key.length() ) {</span>
+<span class="fc" id="L39">            result = String.format(&quot;Invalid key (%s). It does not have same length than English alphabet (%s)&quot;, key, ALPHABET);</span>
+        } else {
+<span class="fc bfc" id="L41" title="All 2 branches covered.">            for (int i=0 ; i&lt;message.length() ; i++) {</span>
+<span class="fc" id="L42">                index=ALPHABET.indexOf(message.charAt(i));</span>
+<span class="fc bfc" id="L43" title="All 2 branches covered.">                result+= (index&gt;=0) ? key.charAt(index) : message.charAt(i);</span>
             }
-<span class="nc" id="L47">        } catch (Exception e) {</span>
-<span class="nc" id="L48">            result = &quot;&quot;;</span>
-<span class="fc" id="L49">        }</span>
-<span class="fc" id="L50">        return result;</span>
+        }
+<span class="fc" id="L46">        return result;</span>
     }
 
     //Constructor
-<span class="fc" id="L54">    public Encode(){</span>
-<span class="fc" id="L55">        setMessage(&quot;&quot;);</span>
-<span class="fc" id="L56">        setKey(&quot;&quot;);</span>
-<span class="fc" id="L57">    }</span>
+<span class="fc" id="L50">    public Encode(){</span>
+<span class="fc" id="L51">        setMessage(&quot;&quot;);</span>
+<span class="fc" id="L52">        setKey(&quot;&quot;);</span>
+<span class="fc" id="L53">    }</span>
 }
 </pre><div class="footer"><span class="right">Created with <a href="http://www.jacoco.org/jacoco">JaCoCo</a> 0.7.8.201612092310</span></div></body></html>

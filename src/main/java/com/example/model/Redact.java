@@ -35,13 +35,13 @@ public class Redact {
     public String getRedact(){
         String result="";
         int count=0;
+        result=getOriginal();
         try {
-            result=original;
-            for (String badWord : badWords) {
-                result=result.replaceAll(badWord, String.format("%" + badWord.length() + "s"," ").replace(' ','*'));
+            for (String badWord : getBadWords()) {
+                result = result.replaceAll(badWord, String.format("%" + badWord.length() + "s", " ").replace(' ', '*'));
             }
         } catch (Exception e) {
-            System.out.println("Error: " + e.getMessage());
+            //Nothing
         }
         return result;
     }

@@ -17,10 +17,10 @@ public class Redact {
 
     //Getters
     public String getOriginal(){
-<span class="nc" id="L20">        return original;</span>
+<span class="fc" id="L20">        return original;</span>
     }
     public List&lt;String&gt; getBadWords(){
-<span class="nc" id="L23">        return badWords;</span>
+<span class="fc" id="L23">        return badWords;</span>
     }
 
     //Setters
@@ -35,13 +35,13 @@ public class Redact {
     public String getRedact(){
 <span class="fc" id="L36">        String result=&quot;&quot;;</span>
 <span class="fc" id="L37">        int count=0;</span>
+<span class="fc" id="L38">        result=getOriginal();</span>
         try {
-<span class="fc" id="L39">            result=original;</span>
-<span class="fc bfc" id="L40" title="All 2 branches covered.">            for (String badWord : badWords) {</span>
-<span class="fc" id="L41">                result=result.replaceAll(badWord, String.format(&quot;%&quot; + badWord.length() + &quot;s&quot;,&quot; &quot;).replace(' ','*'));</span>
+<span class="fc bfc" id="L40" title="All 2 branches covered.">            for (String badWord : getBadWords()) {</span>
+<span class="fc" id="L41">                result = result.replaceAll(badWord, String.format(&quot;%&quot; + badWord.length() + &quot;s&quot;, &quot; &quot;).replace(' ', '*'));</span>
 <span class="fc" id="L42">            }</span>
-<span class="nc" id="L43">        } catch (Exception e) {</span>
-<span class="nc" id="L44">            System.out.println(&quot;Error: &quot; + e.getMessage());</span>
+<span class="fc" id="L43">        } catch (Exception e) {</span>
+            //Nothing
 <span class="fc" id="L45">        }</span>
 <span class="fc" id="L46">        return result;</span>
     }

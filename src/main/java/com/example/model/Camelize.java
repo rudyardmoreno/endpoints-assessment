@@ -28,30 +28,20 @@ public class Camelize {
     public void setInitialCap(boolean value){
         initialCap=value;
     }
-    public void setInitialCap(String value){
-        if (value.toUpperCase()=="TRUE"){
-            setInitialCap(true);
-        } else {
-            setInitialCap(false);
-        }
-    }
 
     //Method
     public String getCamelize(){
         String result="";
         int count=0;
-        try {
-            String[] originalParts = original.split("_");
-            for (String part:originalParts) {
-                //if (count!=0) result+=" ";
-                if ((count==0 && initialCap) || (count!=0)) part=part.substring(0,1).toUpperCase() + part.substring(1);
-                result+=part;
-                count+=1;
-            }
 
-        } catch (Exception e) {
-            System.out.println("Error: " + e.getMessage());
+        String[] originalParts = original.split("_");
+        for (String part:originalParts) {
+            //if (count!=0) result+=" ";
+            if ((count==0 && initialCap) || (count!=0)) part=part.substring(0,1).toUpperCase() + part.substring(1);
+            result+=part;
+            count+=1;
         }
+
         return result;
     }
 

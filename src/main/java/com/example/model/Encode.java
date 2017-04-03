@@ -35,17 +35,13 @@ public class Encode {
         String result="";
         int count=0;
         int index=0;
-        try {
-            if ( ALPHABET.length() != key.length() ) {
-                result = String.format("Invalid key (%s). It does not have same length than English alphabet (%s)", key.toString(), ALPHABET.toString());
-            } else {
-                for (int i=0 ; i<message.length() ; i++) {
-                    index=ALPHABET.indexOf(message.charAt(i));
-                    result+= (index>=0) ? key.charAt(index) : message.charAt(i);
-                }
+        if ( ALPHABET.length() != key.length() ) {
+            result = String.format("Invalid key (%s). It does not have same length than English alphabet (%s)", key, ALPHABET);
+        } else {
+            for (int i=0 ; i<message.length() ; i++) {
+                index=ALPHABET.indexOf(message.charAt(i));
+                result+= (index>=0) ? key.charAt(index) : message.charAt(i);
             }
-        } catch (Exception e) {
-            result = "";
         }
         return result;
     }

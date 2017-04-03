@@ -34,22 +34,16 @@ public class Sed {
 
     //Method
     public String getSed(){
-<span class="fc" id="L37">        String result=message;</span>
-        try {
-<span class="pc bpc" id="L39" title="1 of 2 branches missed.">            if (find.length()!=0) {</span>
-<span class="fc" id="L40">                result=result.replaceAll(find,replace);</span>
-            }
-<span class="nc" id="L42">        } catch (Exception e) {</span>
-<span class="nc" id="L43">            System.out.println(&quot;Error: &quot; + e.getMessage());</span>
-<span class="fc" id="L44">        }</span>
-<span class="fc" id="L45">        return result;</span>
+<span class="fc" id="L37">        String result=getMessage();</span>
+<span class="fc" id="L38">        result=result.replaceAll(getFind(),getReplace());</span>
+<span class="fc" id="L39">        return result;</span>
     }
 
     //Constructor
-<span class="fc" id="L49">    public Sed(){</span>
-<span class="fc" id="L50">        setMessage(&quot;&quot;);</span>
-<span class="fc" id="L51">        setFind(&quot;&quot;);</span>
-<span class="fc" id="L52">        setReplace(&quot;&quot;);</span>
-<span class="fc" id="L53">    }</span>
+<span class="fc" id="L43">    public Sed(){</span>
+<span class="fc" id="L44">        setMessage(&quot;&quot;);</span>
+<span class="fc" id="L45">        setFind(&quot;&quot;);</span>
+<span class="fc" id="L46">        setReplace(&quot;&quot;);</span>
+<span class="fc" id="L47">    }</span>
 }
 </pre><div class="footer"><span class="right">Created with <a href="http://www.jacoco.org/jacoco">JaCoCo</a> 0.7.8.201612092310</span></div></body></html>

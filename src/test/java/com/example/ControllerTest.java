@@ -35,10 +35,21 @@ public class ControllerTest {
                 .andExpect(content().string("thisIsAThing"));
     }
     @Test
-    public void testCamelize() throws Exception{
+    public void testCamelizeIniCapTrue() throws Exception{
         this.mvc.perform(get("/camelize?original=this_is_a_thing&initialCap=true").accept(MediaType.TEXT_PLAIN))
                 .andExpect(status().isOk())
                 .andExpect(content().string("ThisIsAThing"));
+    }
+    @Test
+    public void testCamelizeIniCapFalse() throws Exception{
+        this.mvc.perform(get("/camelize?original=this_is_a_thing&initialCap=false").accept(MediaType.TEXT_PLAIN))
+                .andExpect(status().isOk())
+                .andExpect(content().string("thisIsAThing"));
+    }
+    @Test
+    public void testCamelizeIniCapX() throws Exception{
+        this.mvc.perform(get("/camelize?original=this_is_a_thing&initialCap=X").accept(MediaType.TEXT_PLAIN))
+                .andExpect(status().is4xxClientError());
     }
 
     //Test Endpoint 2 - Redact
@@ -54,7 +65,18 @@ public class ControllerTest {
                 .andExpect(status().isOk())
                 .andExpect(content().string("A ****** of this and a ****** of that"));
     }
-
+    @Test
+    public void testRedactNoneBadWord1() throws Exception{
+        this.mvc.perform(get("/redact?original=A little of this and a little of that").accept(MediaType.TEXT_PLAIN))
+                .andExpect(status().isOk())
+                .andExpect(content().string("A little of this and a little of that"));
+    }
+    @Test
+    public void testRedactOneBadWord2() throws Exception{
+        this.mvc.perform(get("/redact?original=A little of this and a little of that&original=Nothing&badWord=little").accept(MediaType.TEXT_PLAIN))
+                .andExpect(status().isOk())
+                .andExpect(content().string("A ****** of this and a ****** of that"));
+    }
     //Endpoint 3 - Encode
     @Test
     public void testEncode() throws Exception{
@@ -66,6 +88,21 @@ public class ControllerTest {
         this.mvc.perform(request1)
                 .andExpect(status().isOk())
                 .andExpect(content().string("m aohhas zt hnog myr m aohhas zt hnmh"));
+    }
+    @Test
+    public void testEncodeInvalidKey() throws Exception{
+        String key="stunopqabyzdefghijklvw";
+        String ALPHABET="abcdefghijklmnopqrstuvwzyzABCDEFGHIJKLMNOPQRSTUVWZYZ";
+        String expectedResult=String.format("Invalid key (%s). It does not have same length than English alphabet (%s)",key + key.toUpperCase(),ALPHABET);
+
+        MockHttpServletRequestBuilder request1 = post("/encode")
+                .contentType(MediaType.APPLICATION_FORM_URLENCODED)
+                .param("message", "a little of this and a little of that")
+                .param("key", key);
+
+        this.mvc.perform(request1)
+                .andExpect(status().isOk())
+                .andExpect(content().string(expectedResult));
     }
 
     @Test

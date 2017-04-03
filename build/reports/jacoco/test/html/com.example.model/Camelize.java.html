@@ -28,37 +28,27 @@ public class Camelize {
     public void setInitialCap(boolean value){
 <span class="fc" id="L29">        initialCap=value;</span>
 <span class="fc" id="L30">    }</span>
-    public void setInitialCap(String value){
-<span class="nc bnc" id="L32" title="All 2 branches missed.">        if (value.toUpperCase()==&quot;TRUE&quot;){</span>
-<span class="nc" id="L33">            setInitialCap(true);</span>
-        } else {
-<span class="nc" id="L35">            setInitialCap(false);</span>
-        }
-<span class="nc" id="L37">    }</span>
 
     //Method
     public String getCamelize(){
-<span class="fc" id="L41">        String result=&quot;&quot;;</span>
-<span class="fc" id="L42">        int count=0;</span>
-        try {
-<span class="fc" id="L44">            String[] originalParts = original.split(&quot;_&quot;);</span>
-<span class="fc bfc" id="L45" title="All 2 branches covered.">            for (String part:originalParts) {</span>
-                //if (count!=0) result+=&quot; &quot;;
-<span class="fc bfc" id="L47" title="All 6 branches covered.">                if ((count==0 &amp;&amp; initialCap) || (count!=0)) part=part.substring(0,1).toUpperCase() + part.substring(1);</span>
-<span class="fc" id="L48">                result+=part;</span>
-<span class="fc" id="L49">                count+=1;</span>
-            }
+<span class="fc" id="L34">        String result=&quot;&quot;;</span>
+<span class="fc" id="L35">        int count=0;</span>
 
-<span class="nc" id="L52">        } catch (Exception e) {</span>
-<span class="nc" id="L53">            System.out.println(&quot;Error: &quot; + e.getMessage());</span>
-<span class="fc" id="L54">        }</span>
-<span class="fc" id="L55">        return result;</span>
+<span class="fc" id="L37">        String[] originalParts = original.split(&quot;_&quot;);</span>
+<span class="fc bfc" id="L38" title="All 2 branches covered.">        for (String part:originalParts) {</span>
+            //if (count!=0) result+=&quot; &quot;;
+<span class="fc bfc" id="L40" title="All 6 branches covered.">            if ((count==0 &amp;&amp; initialCap) || (count!=0)) part=part.substring(0,1).toUpperCase() + part.substring(1);</span>
+<span class="fc" id="L41">            result+=part;</span>
+<span class="fc" id="L42">            count+=1;</span>
+        }
+
+<span class="fc" id="L45">        return result;</span>
     }
 
     //Constructor
-<span class="fc" id="L59">    Camelize(){</span>
-<span class="fc" id="L60">        setOriginal(&quot;&quot;);</span>
-<span class="fc" id="L61">        setInitialCap(false);</span>
-<span class="fc" id="L62">    }</span>
+<span class="fc" id="L49">    Camelize(){</span>
+<span class="fc" id="L50">        setOriginal(&quot;&quot;);</span>
+<span class="fc" id="L51">        setInitialCap(false);</span>
+<span class="fc" id="L52">    }</span>
 }
 </pre><div class="footer"><span class="right">Created with <a href="http://www.jacoco.org/jacoco">JaCoCo</a> 0.7.8.201612092310</span></div></body></html>

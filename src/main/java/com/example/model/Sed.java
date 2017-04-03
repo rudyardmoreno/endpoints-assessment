@@ -34,14 +34,8 @@ public class Sed {
 
     //Method
     public String getSed(){
-        String result=message;
-        try {
-            if (find.length()!=0) {
-                result=result.replaceAll(find,replace);
-            }
-        } catch (Exception e) {
-            System.out.println("Error: " + e.getMessage());
-        }
+        String result=getMessage();
+        result=result.replaceAll(getFind(),getReplace());
         return result;
     }
 
