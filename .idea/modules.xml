@@ -1,0 +1,11 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project version="4">
+  <component name="ProjectModuleManager">
+    <modules>
+      <module fileurl="file://$PROJECT_DIR$/.idea/modules/endpoints-assessment.iml" filepath="$PROJECT_DIR$/.idea/modules/endpoints-assessment.iml" />
+      <module fileurl="file://$PROJECT_DIR$/.idea/modules/endpoints-assessment_assessment.iml" filepath="$PROJECT_DIR$/.idea/modules/endpoints-assessment_assessment.iml" group="endpoints-assessment" />
+      <module fileurl="file://$PROJECT_DIR$/.idea/modules/endpoints-assessment_main.iml" filepath="$PROJECT_DIR$/.idea/modules/endpoints-assessment_main.iml" group="endpoints-assessment" />
+      <module fileurl="file://$PROJECT_DIR$/.idea/modules/endpoints-assessment_test.iml" filepath="$PROJECT_DIR$/.idea/modules/endpoints-assessment_test.iml" group="endpoints-assessment" />
+    </modules>
+  </component>
+</project>

@@ -1,0 +1,54 @@
+<?xml version="1.0" encoding="UTF-8"?><!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd"><html xmlns="http://www.w3.org/1999/xhtml" lang="en"><head><meta http-equiv="Content-Type" content="text/html;charset=UTF-8"/><link rel="stylesheet" href="../jacoco-resources/report.css" type="text/css"/><link rel="shortcut icon" href="../jacoco-resources/report.gif" type="image/gif"/><title>Redact.java</title><link rel="stylesheet" href="../jacoco-resources/prettify.css" type="text/css"/><script type="text/javascript" src="../jacoco-resources/prettify.js"></script></head><body onload="window['PR_TAB_WIDTH']=4;prettyPrint()"><div class="breadcrumb" id="breadcrumb"><span class="info"><a href="../jacoco-sessions.html" class="el_session">Sessions</a></span><a href="../index.html" class="el_report">endpoints-assessment</a> &gt; <a href="index.source.html" class="el_package">com.example.model</a> &gt; <span class="el_source">Redact.java</span></div><h1>Redact.java</h1><pre class="source lang-java linenums">package com.example.model;
+
+import java.util.List;
+
+/**
+ * Created by Rudyard Moreno on 04/02/2017
+ * DISH NETWORK - Galvanize Training
+ * CNE-002 (Dish)
+ * Unit 3 - Request and Responses
+ * Model - Redact Class
+ */
+
+public class Redact {
+    //Properties
+    private String original;
+    private List&lt;String&gt; badWords;
+
+    //Getters
+    public String getOriginal(){
+<span class="nc" id="L20">        return original;</span>
+    }
+    public List&lt;String&gt; getBadWords(){
+<span class="nc" id="L23">        return badWords;</span>
+    }
+
+    //Setters
+    public void setOriginal(String value){
+<span class="fc" id="L28">        original=value;</span>
+<span class="fc" id="L29">    }</span>
+    public void setBadWords(List&lt;String&gt; value){
+<span class="fc" id="L31">        badWords=value;</span>
+<span class="fc" id="L32">    }</span>
+
+    //Method
+    public String getRedact(){
+<span class="fc" id="L36">        String result=&quot;&quot;;</span>
+<span class="fc" id="L37">        int count=0;</span>
+        try {
+<span class="fc" id="L39">            result=original;</span>
+<span class="fc bfc" id="L40" title="All 2 branches covered.">            for (String badWord : badWords) {</span>
+<span class="fc" id="L41">                result=result.replaceAll(badWord, String.format(&quot;%&quot; + badWord.length() + &quot;s&quot;,&quot; &quot;).replace(' ','*'));</span>
+<span class="fc" id="L42">            }</span>
+<span class="nc" id="L43">        } catch (Exception e) {</span>
+<span class="nc" id="L44">            System.out.println(&quot;Error: &quot; + e.getMessage());</span>
+<span class="fc" id="L45">        }</span>
+<span class="fc" id="L46">        return result;</span>
+    }
+
+    //Constructor
+<span class="fc" id="L50">    public Redact(){</span>
+<span class="fc" id="L51">        setOriginal(&quot;&quot;);</span>
+<span class="fc" id="L52">    }</span>
+}
+</pre><div class="footer"><span class="right">Created with <a href="http://www.jacoco.org/jacoco">JaCoCo</a> 0.7.8.201612092310</span></div></body></html>

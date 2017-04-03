@@ -1,0 +1,64 @@
+<?xml version="1.0" encoding="UTF-8"?><!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd"><html xmlns="http://www.w3.org/1999/xhtml" lang="en"><head><meta http-equiv="Content-Type" content="text/html;charset=UTF-8"/><link rel="stylesheet" href="../jacoco-resources/report.css" type="text/css"/><link rel="shortcut icon" href="../jacoco-resources/report.gif" type="image/gif"/><title>Camelize.java</title><link rel="stylesheet" href="../jacoco-resources/prettify.css" type="text/css"/><script type="text/javascript" src="../jacoco-resources/prettify.js"></script></head><body onload="window['PR_TAB_WIDTH']=4;prettyPrint()"><div class="breadcrumb" id="breadcrumb"><span class="info"><a href="../jacoco-sessions.html" class="el_session">Sessions</a></span><a href="../index.html" class="el_report">endpoints-assessment</a> &gt; <a href="index.source.html" class="el_package">com.example.model</a> &gt; <span class="el_source">Camelize.java</span></div><h1>Camelize.java</h1><pre class="source lang-java linenums">package com.example.model;
+
+/**
+ * Created by Rudyard Moreno on 04/02/2017
+ * DISH NETWORK - Galvanize Training
+ * CNE-002 (Dish)
+ * Unit 3 - Request and Responses
+ * Model - Camelize Class
+ */
+
+public class Camelize {
+    //Properties
+    private String original;
+    private boolean initialCap;
+
+    //Getters
+    public String getOriginal(){
+<span class="fc" id="L18">        return original;</span>
+    }
+    public boolean isInitialCap(){
+<span class="fc" id="L21">        return initialCap;</span>
+    }
+
+    //Setters
+    public void setOriginal(String value){
+<span class="fc" id="L26">        original=value;</span>
+<span class="fc" id="L27">    }</span>
+    public void setInitialCap(boolean value){
+<span class="fc" id="L29">        initialCap=value;</span>
+<span class="fc" id="L30">    }</span>
+    public void setInitialCap(String value){
+<span class="nc bnc" id="L32" title="All 2 branches missed.">        if (value.toUpperCase()==&quot;TRUE&quot;){</span>
+<span class="nc" id="L33">            setInitialCap(true);</span>
+        } else {
+<span class="nc" id="L35">            setInitialCap(false);</span>
+        }
+<span class="nc" id="L37">    }</span>
+
+    //Method
+    public String getCamelize(){
+<span class="fc" id="L41">        String result=&quot;&quot;;</span>
+<span class="fc" id="L42">        int count=0;</span>
+        try {
+<span class="fc" id="L44">            String[] originalParts = original.split(&quot;_&quot;);</span>
+<span class="fc bfc" id="L45" title="All 2 branches covered.">            for (String part:originalParts) {</span>
+                //if (count!=0) result+=&quot; &quot;;
+<span class="fc bfc" id="L47" title="All 6 branches covered.">                if ((count==0 &amp;&amp; initialCap) || (count!=0)) part=part.substring(0,1).toUpperCase() + part.substring(1);</span>
+<span class="fc" id="L48">                result+=part;</span>
+<span class="fc" id="L49">                count+=1;</span>
+            }
+
+<span class="nc" id="L52">        } catch (Exception e) {</span>
+<span class="nc" id="L53">            System.out.println(&quot;Error: &quot; + e.getMessage());</span>
+<span class="fc" id="L54">        }</span>
+<span class="fc" id="L55">        return result;</span>
+    }
+
+    //Constructor
+<span class="fc" id="L59">    Camelize(){</span>
+<span class="fc" id="L60">        setOriginal(&quot;&quot;);</span>
+<span class="fc" id="L61">        setInitialCap(false);</span>
+<span class="fc" id="L62">    }</span>
+}
+</pre><div class="footer"><span class="right">Created with <a href="http://www.jacoco.org/jacoco">JaCoCo</a> 0.7.8.201612092310</span></div></body></html>

@@ -1,0 +1,55 @@
+<?xml version="1.0" encoding="UTF-8"?><!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd"><html xmlns="http://www.w3.org/1999/xhtml" lang="en"><head><meta http-equiv="Content-Type" content="text/html;charset=UTF-8"/><link rel="stylesheet" href="../jacoco-resources/report.css" type="text/css"/><link rel="shortcut icon" href="../jacoco-resources/report.gif" type="image/gif"/><title>Sed.java</title><link rel="stylesheet" href="../jacoco-resources/prettify.css" type="text/css"/><script type="text/javascript" src="../jacoco-resources/prettify.js"></script></head><body onload="window['PR_TAB_WIDTH']=4;prettyPrint()"><div class="breadcrumb" id="breadcrumb"><span class="info"><a href="../jacoco-sessions.html" class="el_session">Sessions</a></span><a href="../index.html" class="el_report">endpoints-assessment</a> &gt; <a href="index.source.html" class="el_package">com.example.model</a> &gt; <span class="el_source">Sed.java</span></div><h1>Sed.java</h1><pre class="source lang-java linenums">package com.example.model;
+
+/**
+ * Created by Rudyard Moreno on 04/02/2017
+ * DISH NETWORK - Galvanize Training
+ * CNE-002 (Dish)
+ * Unit 3 - Request and Responses
+ * Model - Sed Class
+ */
+
+public class Sed {
+    //Properties
+    private String message;
+    private String find;
+    private String replace;
+
+    //Getters
+<span class="fc" id="L18">    public String getMessage() {return message; }</span>
+    public String getFind(){
+<span class="fc" id="L20">        return find;</span>
+    }
+    public String getReplace(){
+<span class="fc" id="L23">        return replace;</span>
+    }
+
+    //Setters
+<span class="fc" id="L27">    public void setMessage(String value) { message=value; }</span>
+    public void setFind(String value){
+<span class="fc" id="L29">        find=value;</span>
+<span class="fc" id="L30">    }</span>
+    public void setReplace(String value){
+<span class="fc" id="L32">        replace=value;</span>
+<span class="fc" id="L33">    }</span>
+
+    //Method
+    public String getSed(){
+<span class="fc" id="L37">        String result=message;</span>
+        try {
+<span class="pc bpc" id="L39" title="1 of 2 branches missed.">            if (find.length()!=0) {</span>
+<span class="fc" id="L40">                result=result.replaceAll(find,replace);</span>
+            }
+<span class="nc" id="L42">        } catch (Exception e) {</span>
+<span class="nc" id="L43">            System.out.println(&quot;Error: &quot; + e.getMessage());</span>
+<span class="fc" id="L44">        }</span>
+<span class="fc" id="L45">        return result;</span>
+    }
+
+    //Constructor
+<span class="fc" id="L49">    public Sed(){</span>
+<span class="fc" id="L50">        setMessage(&quot;&quot;);</span>
+<span class="fc" id="L51">        setFind(&quot;&quot;);</span>
+<span class="fc" id="L52">        setReplace(&quot;&quot;);</span>
+<span class="fc" id="L53">    }</span>
+}
+</pre><div class="footer"><span class="right">Created with <a href="http://www.jacoco.org/jacoco">JaCoCo</a> 0.7.8.201612092310</span></div></body></html>

@@ -1,0 +1,69 @@
+<?xml version="1.0" encoding="UTF-8"?><!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd"><html xmlns="http://www.w3.org/1999/xhtml" lang="en"><head><meta http-equiv="Content-Type" content="text/html;charset=UTF-8"/><link rel="stylesheet" href="../jacoco-resources/report.css" type="text/css"/><link rel="shortcut icon" href="../jacoco-resources/report.gif" type="image/gif"/><title>EndpointsController.java</title><link rel="stylesheet" href="../jacoco-resources/prettify.css" type="text/css"/><script type="text/javascript" src="../jacoco-resources/prettify.js"></script></head><body onload="window['PR_TAB_WIDTH']=4;prettyPrint()"><div class="breadcrumb" id="breadcrumb"><span class="info"><a href="../jacoco-sessions.html" class="el_session">Sessions</a></span><a href="../index.html" class="el_report">endpoints-assessment</a> &gt; <a href="index.source.html" class="el_package">com.example</a> &gt; <span class="el_source">EndpointsController.java</span></div><h1>EndpointsController.java</h1><pre class="source lang-java linenums">package com.example;
+
+/*
+ * Created by Rudyard Moreno on 3/30/17
+ * DISH NETWORK - Galvanize Training
+ * CNE-002 (Dish)
+ * Endpoints Controller
+ */
+
+import com.example.model.Camelize;
+import com.example.model.Encode;
+import com.example.model.Redact;
+import com.example.model.Sed;
+import org.springframework.http.MediaType;
+import org.springframework.util.MultiValueMap;
+import org.springframework.web.bind.annotation.*;
+
+@RestController
+<span class="fc" id="L19">public class EndpointsController {</span>
+
+    //Endpoint 1 - Camelize
+    @GetMapping(&quot;/camelize&quot;)
+    public String camelize(Camelize camelize) {
+<span class="fc" id="L24">        return camelize.getCamelize();</span>
+    }
+
+    //Endpoint 2 - Redact
+    @GetMapping(&quot;/redact&quot;)
+    public String redact(@RequestParam MultiValueMap&lt;String, String&gt; querystring) {
+<span class="fc" id="L30">        String result=&quot;&quot;;</span>
+        try {
+<span class="fc" id="L32">            Redact redact = new Redact();</span>
+<span class="fc bfc" id="L33" title="All 2 branches covered.">            for (String key : querystring.keySet()) {</span>
+<span class="pc bpc" id="L34" title="4 of 10 branches missed.">                switch (key.toUpperCase()) {</span>
+                    case &quot;ORIGINAL&quot;:
+<span class="pc bpc" id="L36" title="1 of 2 branches missed.">                        for (String value : querystring.get(key)){</span>
+<span class="fc" id="L37">                            redact.setOriginal(value);</span>
+<span class="fc" id="L38">                            break;</span>
+                        }
+<span class="fc" id="L40">                        break;</span>
+                    case &quot;BADWORD&quot;:
+<span class="fc" id="L42">                        redact.setBadWords(querystring.get(key));</span>
+                        break;
+                }
+<span class="fc" id="L45">            }</span>
+<span class="fc" id="L46">            result=redact.getRedact();</span>
+<span class="nc" id="L47">        } catch (Exception e) {</span>
+<span class="nc" id="L48">            result=&quot;Redact Error: &quot; + e.getMessage();</span>
+<span class="fc" id="L49">        }</span>
+<span class="fc" id="L50">        return result;</span>
+    }
+
+    //Endpoint 3 - Encode
+    @PostMapping(value=&quot;/encode&quot;, consumes = MediaType.APPLICATION_FORM_URLENCODED_VALUE)
+    public String encode(Encode encode) {
+<span class="fc" id="L56">        return encode.getEncode();</span>
+    }
+
+    //Endpoint 4 - Sed
+    @PostMapping(&quot;/s/{find}/{replace}&quot;)
+    public String sed(@PathVariable String find, @PathVariable String replace, @RequestBody String rawBody) {
+<span class="fc" id="L62">        Sed sed = new Sed();</span>
+<span class="fc" id="L63">        sed.setFind(find);</span>
+<span class="fc" id="L64">        sed.setReplace(replace);</span>
+<span class="fc" id="L65">        sed.setMessage(rawBody);</span>
+<span class="fc" id="L66">        return sed.getSed();</span>
+    }
+}
+</pre><div class="footer"><span class="right">Created with <a href="http://www.jacoco.org/jacoco">JaCoCo</a> 0.7.8.201612092310</span></div></body></html>
