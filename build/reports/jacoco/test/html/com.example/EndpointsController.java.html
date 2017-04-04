@@ -30,36 +30,33 @@ import org.springframework.web.bind.annotation.*;
 <span class="fc" id="L30">        String result=&quot;&quot;;</span>
 <span class="fc" id="L31">        Redact redact = new Redact();</span>
 <span class="fc bfc" id="L32" title="All 2 branches covered.">        for (String key : querystring.keySet()) {</span>
-<span class="pc bpc" id="L33" title="4 of 10 branches missed.">            switch (key.toUpperCase()) {</span>
-                case &quot;ORIGINAL&quot;:
-<span class="pc bpc" id="L35" title="1 of 2 branches missed.">                    for (String value : querystring.get(key)){</span>
-<span class="fc" id="L36">                        redact.setOriginal(value);</span>
-<span class="fc" id="L37">                        break;</span>
-                    }
-<span class="fc" id="L39">                    break;</span>
-                case &quot;BADWORD&quot;:
-<span class="fc" id="L41">                    redact.setBadWords(querystring.get(key));</span>
-                    break;
+<span class="fc bfc" id="L33" title="All 2 branches covered.">            if (key.equals(&quot;original&quot;)) {</span>
+<span class="fc bfc" id="L34" title="All 2 branches covered.">                for (String value : querystring.get(key)){</span>
+<span class="fc" id="L35">                    redact.setOriginal(value);</span>
+<span class="fc" id="L36">                }</span>
             }
-<span class="fc" id="L44">        }</span>
-<span class="fc" id="L45">        result=redact.getRedact();</span>
-<span class="fc" id="L46">        return result;</span>
+<span class="fc bfc" id="L38" title="All 2 branches covered.">            if (key.equals(&quot;badWord&quot;)) {</span>
+<span class="fc" id="L39">                redact.setBadWords(querystring.get(key));</span>
+            }
+<span class="fc" id="L41">        }</span>
+<span class="fc" id="L42">        result=redact.getRedact();</span>
+<span class="fc" id="L43">        return result;</span>
     }
 
     //Endpoint 3 - Encode
     @PostMapping(value=&quot;/encode&quot;, consumes = MediaType.APPLICATION_FORM_URLENCODED_VALUE)
     public String encode(Encode encode) {
-<span class="fc" id="L52">        return encode.getEncode();</span>
+<span class="fc" id="L49">        return encode.getEncode();</span>
     }
 
     //Endpoint 4 - Sed
     @PostMapping(&quot;/s/{find}/{replace}&quot;)
     public String sed(@PathVariable String find, @PathVariable String replace, @RequestBody String rawBody) {
-<span class="fc" id="L58">        Sed sed = new Sed();</span>
-<span class="fc" id="L59">        sed.setFind(find);</span>
-<span class="fc" id="L60">        sed.setReplace(replace);</span>
-<span class="fc" id="L61">        sed.setMessage(rawBody);</span>
-<span class="fc" id="L62">        return sed.getSed();</span>
+<span class="fc" id="L55">        Sed sed = new Sed();</span>
+<span class="fc" id="L56">        sed.setFind(find);</span>
+<span class="fc" id="L57">        sed.setReplace(replace);</span>
+<span class="fc" id="L58">        sed.setMessage(rawBody);</span>
+<span class="fc" id="L59">        return sed.getSed();</span>
     }
 }
 </pre><div class="footer"><span class="right">Created with <a href="http://www.jacoco.org/jacoco">JaCoCo</a> 0.7.8.201612092310</span></div></body></html>

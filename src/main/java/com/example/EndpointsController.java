@@ -30,16 +30,13 @@ public class EndpointsController {
         String result="";
         Redact redact = new Redact();
         for (String key : querystring.keySet()) {
-            switch (key.toUpperCase()) {
-                case "ORIGINAL":
-                    for (String value : querystring.get(key)){
-                        redact.setOriginal(value);
-                        break;
-                    }
-                    break;
-                case "BADWORD":
-                    redact.setBadWords(querystring.get(key));
-                    break;
+            if (key.equals("original")) {
+                for (String value : querystring.get(key)){
+                    redact.setOriginal(value);
+                }
+            }
+            if (key.equals("badWord")) {
+                redact.setBadWords(querystring.get(key));
             }
         }
         result=redact.getRedact();

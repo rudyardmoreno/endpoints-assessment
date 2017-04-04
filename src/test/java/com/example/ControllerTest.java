@@ -75,7 +75,7 @@ public class ControllerTest {
     public void testRedactOneBadWord2() throws Exception{
         this.mvc.perform(get("/redact?original=A little of this and a little of that&original=Nothing&badWord=little").accept(MediaType.TEXT_PLAIN))
                 .andExpect(status().isOk())
-                .andExpect(content().string("A ****** of this and a ****** of that"));
+                .andExpect(content().string("Nothing"));
     }
     //Endpoint 3 - Encode
     @Test
